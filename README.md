@@ -98,6 +98,18 @@ upward trend from 2000 to 2011 followed by a decline.
   frameborder="0"
 ></iframe>
 
+This map shows the geographic distribution of major power outages across 
+the U.S. from 2000 to 2016. California, Texas, and Michigan have the 
+highest number of outages, suggesting that both population density and 
+climate play a role in outage frequency.
+
+<iframe
+  src="assets/outage_map.html"
+  width="900"
+  height="500"
+  frameborder="0"
+></iframe>
+
 ## Assessment of Missingness
 
 I believe DEMAND.LOSS.MW is likely NMAR. The missingness is probably related 
