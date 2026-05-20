@@ -87,3 +87,113 @@ upward trend from 2000 to 2011 followed by a decline.
   height="500"
   frameborder="0"
 ></iframe>
+
+## Assessment of Missingness
+
+I believe DEMAND.LOSS.MW is likely NMAR. The missingness is probably related 
+to the value itself — smaller outages likely didn't have demand loss measured 
+or reported at all. If we had data on which utility company reported each 
+outage, that could explain the missingness and make it MAR.
+
+The permutation test for CAUSE.CATEGORY produced a p-value < 0.002, meaning 
+the missingness of CUSTOMERS.AFFECTED is dependent on CAUSE.CATEGORY. 
+Certain types of outages are more likely to have missing customer data than others.
+
+<iframe
+  src="assets/missingness.html"
+  width="800"
+  height="500"
+  frameborder="0"
+></iframe>
+
+The permutation test for MONTH produced a p-value of 1.0, meaning the 
+missingness of CUSTOMERS.AFFECTED does not depend on the month the outage 
+occurred. This makes sense since missing customer data is unlikely to be 
+related to the time of year.
+
+## Hypothesis Testing
+
+**Null Hypothesis:** Outages in summer and outages in winter affect the same 
+number of customers on average, and any difference is due to random chance.
+
+**Alternative Hypothesis:** Outages in summer affect more customers on average 
+than outages in winter.
+
+**Test Statistic:** Difference in means (mean customers affected in summer minus 
+mean customers affected in winter). Significance level: 0.05.
+
+The observed difference in means was about -8190 customers, meaning winter 
+outages actually affected more customers on average than summer outages. 
+The p-value was 0.672, which is well above our significance level of 0.05. 
+We fail to reject the null hypothesis. The data does not provide enough 
+evidence to conclude that summer outages affect more customers than winter 
+outages. This was a surprising finding since we might expect summer heat 
+waves to cause larger outages, but winter storms may actually be more 
+damaging to the power grid.
+
+## Framing a Prediction Problem
+
+**Prediction Problem:** Predict the number of customers affected by a power 
+outage (CUSTOMERS.AFFECTED).
+
+**Type:** Regression, since I am predicting a continuous numerical value.
+
+**Response Variable:** CUSTOMERS.AFFECTED. I chose this because it is a direct 
+measure of how severe an outage is, and understanding what drives it could 
+help energy companies better prepare for large outages.
+
+**Metric:** RMSE (Root Mean Squared Error). I chose RMSE over R squared because 
+it is in the same units as my response variable (number of customers), making 
+it easier to interpret.
+
+**Features I would know at the time of prediction:** At the time an outage 
+starts, I would know the cause category, climate region, state, month, year, 
+and total customers in the area. I would not include outage duration since 
+that information is only available after the outage is already over.
+
+## Baseline Model
+
+My baseline model uses Linear Regression to predict CUSTOMERS.AFFECTED with 
+two features. CAUSE.CATEGORY is nominal so I one hot encoded it using 
+OneHotEncoder. TOTAL.CUSTOMERS is quantitative so I left it as is. In total 
+I have 1 nominal feature and 1 quantitative feature. The training RMSE was 
+about 267,126 customers and the test RMSE was about 339,307 customers. I 
+don't think this is a very good model since the RMSE is really high relative 
+to the scale of the data. The gap between training and test RMSE also suggests 
+some overfitting.
+
+## Final Model
+
+For my final model I added two new features: CLIMATE.REGION (nominal, one hot 
+encoded) and MONTH (quantitative). I switched from LinearRegression to 
+RandomForestRegressor since it can capture non-linear relationships between 
+features and the target variable. The best hyperparameters from GridSearchCV 
+were max_depth of 3 and n_estimators of 200. The final test RMSE dropped from 
+about 339,307 to about 330,062 customers, which is an improvement over the 
+baseline.
+
+## Fairness Analysis
+
+**Group X:** Northeast region outages
+
+**Group Y:** All other region outages
+
+**Evaluation Metric:** RMSE
+
+**Null Hypothesis:** My model is fair. The RMSE for Northeast outages and 
+non-Northeast outages are roughly the same, and any difference is due to 
+random chance.
+
+**Alternative Hypothesis:** My model is unfair. The RMSE for Northeast outages 
+is lower than for non-Northeast outages.
+
+**Test Statistic:** Difference in RMSE. Significance level: 0.05.
+
+The observed difference in RMSE was about -287,571, meaning the model 
+actually performs better on Northeast outages than on outages in other 
+regions. The p-value was 0.002, which is below our significance level of 
+0.05, so we reject the null hypothesis. The data suggests that my model 
+may not be perfectly fair. This is likely because the Northeast has the 
+most outages in the dataset, giving the model more examples to learn from 
+for that region. In the future, collecting more data from underrepresented 
+regions could help improve fairness.
