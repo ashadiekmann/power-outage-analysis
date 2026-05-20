@@ -44,6 +44,16 @@ using pd.to_numeric, which turned any non-numeric entries into NaN. After
 cleaning, the three columns with the most missing values were DEMAND.LOSS.MW 
 (705 missing), CUSTOMERS.AFFECTED (443 missing), and OUTAGE.DURATION (58 missing).
 
+Here are the first 5 rows of the cleaned dataset:
+
+|   YEAR |   MONTH | U.S._STATE   | CLIMATE.REGION     | CAUSE.CATEGORY     |   OUTAGE.DURATION |   CUSTOMERS.AFFECTED |
+|-------:|--------:|:-------------|:-------------------|:-------------------|------------------:|---------------------:|
+|   2011 |       7 | Minnesota    | East North Central | severe weather     |              3060 |                70000 |
+|   2014 |       5 | Minnesota    | East North Central | intentional attack |                 1 |                  nan |
+|   2010 |      10 | Minnesota    | East North Central | severe weather     |              3000 |                70000 |
+|   2012 |       6 | Minnesota    | East North Central | severe weather     |              2550 |                68200 |
+|   2015 |       7 | Minnesota    | East North Central | severe weather     |              1740 |               250000 |
+
 The Northeast region has the most power outages by far with around 350, 
 followed by the South and West. This suggests that more densely populated 
 regions tend to experience more outages.
