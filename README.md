@@ -4,17 +4,15 @@
 
 ## Introduction
 
-This dataset contains information on major power outages in the continental 
-United States from January 2000 to July 2016. It has 1,534 rows, where 
-each row represents one major power outage event.
+This project analyzes 1,534 major power outages across the continental
+United States from 2000 to 2016. Each row represents one outage event.
 
-**Central Question: Where and when do major power outages tend to occur, 
-and what characteristics are associated with higher severity?**
+**Central Question: What actually predicts how severe a power outage
+will be, and is that prediction fair across all regions of the US?**
 
-Understanding patterns in power outages matters for energy companies, 
-policymakers, and everyday people who depend on reliable electricity. 
-By identifying which regions and time periods are most vulnerable, 
-we can better prepare for future outages.
+Understanding what drives outage severity matters for utility companies,
+policymakers, and the millions of people who depend on reliable electricity.
+The answer is more surprising than you might expect.
 
 Relevant columns and their descriptions:
 
