@@ -99,6 +99,23 @@ upward trend from 2000 to 2011 followed by a decline.
   frameborder="0"
 ></iframe>
 
+The table below shows average severity metrics by climate region. 
+The East North Central region has the longest average outage duration 
+at over 5,000 minutes, despite not having the most outages overall.
+
+| CLIMATE.REGION     | Avg Duration (min) | Avg Customers Affected | Avg Demand Loss (MW) |
+|:-------------------|-------------------:|-----------------------:|---------------------:|
+| East North Central |             5352.0 |               138389.0 |                560.4 |
+| Northeast          |             2991.7 |               121960.0 |                537.4 |
+| South              |             2846.1 |               183501.0 |                399.1 |
+| Central            |             2701.1 |               126810.0 |                477.5 |
+| Southeast          |             2217.7 |               180540.0 |                761.5 |
+| West               |             1628.3 |               194580.0 |                651.5 |
+| Southwest          |             1566.1 |                39028.9 |                424.6 |
+| Northwest          |             1284.5 |                81420.0 |                177.9 |
+| West North Central |              696.6 |                47316.0 |                326.0 |
+
+
 ## Assessment of Missingness
 
 I believe DEMAND.LOSS.MW is likely NMAR. The missingness is probably related 
