@@ -118,10 +118,12 @@ at over 5,000 minutes, despite not having the most outages overall.
 
 ## Assessment of Missingness
 
-I believe DEMAND.LOSS.MW is likely NMAR. The missingness is probably related 
-to the value itself — smaller outages likely didn't have demand loss measured 
-or reported at all. If we had data on which utility company reported each 
-outage, that could explain the missingness and make it MAR.
+I believe DEMAND.LOSS.MW is likely NMAR. The missingness is probably 
+related to the value itself — smaller outages likely didn't have demand 
+loss measured or reported at all, meaning the chance of it being missing 
+depends on the actual demand loss value. If we had data on which utility 
+company reported each outage and their individual reporting thresholds, 
+that could explain the missingness and make it MAR.
 
 The permutation test for CAUSE.CATEGORY produced a p-value < 0.002, meaning 
 the missingness of CUSTOMERS.AFFECTED is dependent on CAUSE.CATEGORY. 
