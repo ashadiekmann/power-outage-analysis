@@ -236,7 +236,10 @@ random chance.
 **Alternative Hypothesis:** My model is unfair. The RMSE for Northeast outages 
 is lower than for non-Northeast outages.
 
-**Test Statistic:** Difference in RMSE. Significance level: 0.05.
+**Test Statistic:** Difference in RMSE (Northeast RMSE minus non-Northeast 
+RMSE). I chose this because RMSE is my evaluation metric and I want to 
+directly measure whether the model's error is lower for one group than 
+the other. Significance level: 0.05.
 
 The observed difference in RMSE was about -290,278, meaning the model 
 actually performs better on Northeast outages than on outages in other 
