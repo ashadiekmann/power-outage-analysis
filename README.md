@@ -12,12 +12,10 @@ will be, and is that prediction fair across all regions of the US?**
 
 Understanding what drives outage severity matters for utility companies,
 policymakers, and the millions of people who depend on reliable electricity.
-Between 2000 and 2016, major outages affected an average of over 100,000
-customers per event, and the number of outages nearly tripled between 2009
-and 2011 alone. In the East North Central region, outages lasted nearly
-4 days on average - far longer than any other region. By understanding
-what predicts severity, utility companies can better allocate emergency
-resources before an outage even ends.
+Between 2000 and 2016, major outages affected hundreds of thousands of
+customers at a time, and some regions saw outages lasting nearly 4 days
+on average. The answer to what actually drives that severity is more
+surprising than you might expect.
 
 Relevant columns and their descriptions:
 
