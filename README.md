@@ -151,7 +151,10 @@ number of customers on average, and any difference is due to random chance.
 than outages in winter.
 
 **Test Statistic:** Difference in means (mean customers affected in summer minus 
-mean customers affected in winter). Significance level: 0.05.
+mean customers affected in winter). I chose difference in means because 
+CUSTOMERS.AFFECTED is a numerical variable and we are comparing averages 
+between two groups, making it the most natural and interpretable test 
+statistic. Significance level: 0.05.
 
 The observed difference in means was about -8190 customers, meaning winter 
 outages actually affected more customers on average than summer outages. 
