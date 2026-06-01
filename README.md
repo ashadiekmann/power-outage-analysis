@@ -241,9 +241,9 @@ RMSE). I chose this because RMSE is my evaluation metric and I want to
 directly measure whether the model's error is lower for one group than 
 the other. Significance level: 0.05.
 
-The observed difference in RMSE was about -290,278, meaning the model 
+The observed difference in RMSE was about -291,035, meaning the model 
 actually performs better on Northeast outages than on outages in other 
-regions. The p-value was 0.002, which is below our significance level of 
+regions. The p-value was 0.004, which is below our significance level of 
 0.05, so we reject the null hypothesis. The data suggests that my model 
 may not be perfectly fair. This is likely because the Northeast has the 
 most outages in the dataset, giving the model more examples to learn from 
