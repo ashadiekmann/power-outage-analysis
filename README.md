@@ -136,10 +136,11 @@ Certain types of outages are more likely to have missing customer data than othe
   frameborder="0"
 ></iframe>
 
-The permutation test for MONTH produced a p-value of 1.0, meaning the 
-missingness of CUSTOMERS.AFFECTED does not depend on the month the outage 
-occurred. This makes sense since missing customer data is unlikely to be 
-related to the time of year.
+The permutation test for TOTAL.CUSTOMERS produced a p-value of approximately 
+0.8, meaning the missingness of CUSTOMERS.AFFECTED does not depend on the 
+total number of customers in the state. This makes sense since whether 
+customer data gets reported is related to the type of outage, not the 
+size of the state's customer base.
 
 ## Hypothesis Testing
 
@@ -154,7 +155,7 @@ mean customers affected in winter). Significance level: 0.05.
 
 The observed difference in means was about -8190 customers, meaning winter 
 outages actually affected more customers on average than summer outages. 
-The p-value was 0.672, which is well above our significance level of 0.05. 
+The p-value was 0.636, which is well above our significance level of 0.05. 
 We fail to reject the null hypothesis. The data does not provide enough 
 evidence to conclude that summer outages affect more customers than winter 
 outages. This was a surprising finding since we might expect summer heat 
@@ -219,7 +220,7 @@ is lower than for non-Northeast outages.
 
 **Test Statistic:** Difference in RMSE. Significance level: 0.05.
 
-The observed difference in RMSE was about -287,571, meaning the model 
+The observed difference in RMSE was about -290,278, meaning the model 
 actually performs better on Northeast outages than on outages in other 
 regions. The p-value was 0.002, which is below our significance level of 
 0.05, so we reject the null hypothesis. The data suggests that my model 
