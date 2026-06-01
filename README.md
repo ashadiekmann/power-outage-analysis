@@ -204,13 +204,22 @@ total customers is not enough to accurately predict outage severity.
 
 ## Final Model
 
-For my final model I added two new features: CLIMATE.REGION (nominal, one hot 
-encoded) and MONTH (quantitative). I switched from LinearRegression to 
-RandomForestRegressor since it can capture non-linear relationships between 
-features and the target variable. The best hyperparameters from GridSearchCV 
-were max_depth of 3 and n_estimators of 200. The final test RMSE dropped from 
-about 339,307 to about 330,062 customers, which is an improvement over the 
-baseline.
+For my final model I added two new engineered features. I applied 
+StandardScaler to TOTAL.CUSTOMERS because the raw values are really large 
+(in the millions) and I wanted to normalize them so they don't overpower 
+the other features in the model. I also used Binarizer with a threshold of 
+5.5 on MONTH to create a binary "is summer" feature. This converts the 
+month number into a 0 or 1 depending on whether the outage happened in 
+summer (June, July, August) or not. I thought this made sense to add 
+because my hypothesis test in Step 4 explored whether season affects 
+outage severity, so it seemed worth including as a feature. I also kept 
+CLIMATE.REGION encoded with OneHotEncoder since different regions have 
+very different infrastructure. I switched from LinearRegression to 
+RandomForestRegressor since the relationship between these features and 
+customers affected probably isn't perfectly linear. The best hyperparameters 
+from GridSearchCV were max_depth of 3 and n_estimators of 200. The final 
+test RMSE dropped from about 339,307 to about 330,855, which is an 
+improvement over the baseline.
 
 ## Fairness Analysis
 
