@@ -178,7 +178,9 @@ help energy companies better prepare for large outages.
 
 **Metric:** RMSE (Root Mean Squared Error). I chose RMSE over R squared because 
 it is in the same units as my response variable (number of customers), making 
-it easier to interpret.
+it easier to interpret. I chose it over MAE because RMSE penalizes large 
+errors more heavily, which matters here since severely underpredicting a 
+large outage is worse than slightly missing on many small ones.
 
 **Features I would know at the time of prediction:** At the time an outage 
 starts, I would know the cause category, climate region, state, month, year, 
@@ -189,12 +191,16 @@ that information is only available after the outage is already over.
 
 My baseline model uses Linear Regression to predict CUSTOMERS.AFFECTED with 
 two features. CAUSE.CATEGORY is nominal so I one hot encoded it using 
-OneHotEncoder. TOTAL.CUSTOMERS is quantitative so I left it as is. In total 
-I have 1 nominal feature and 1 quantitative feature. The training RMSE was 
-about 267,126 customers and the test RMSE was about 339,307 customers. I 
-don't think this is a very good model since the RMSE is really high relative 
-to the scale of the data. The gap between training and test RMSE also suggests 
-some overfitting.
+OneHotEncoder, which creates a separate 0/1 column for each category so the 
+model can work with it numerically. TOTAL.CUSTOMERS is quantitative so I left 
+it as is. In total I have 1 nominal feature and 1 quantitative feature. The 
+training RMSE was about 267,126 customers and the test RMSE was about 339,307 
+customers. To put this in context, the mean value of CUSTOMERS.AFFECTED in 
+the dataset is about 143,456 and the median is 70,135 — meaning our test RMSE 
+is more than double the mean and nearly 5x the median. This confirms the 
+baseline is not a good model. The gap between training and test RMSE also 
+suggests some overfitting, likely because only knowing cause category and 
+total customers is not enough to accurately predict outage severity.
 
 ## Final Model
 
